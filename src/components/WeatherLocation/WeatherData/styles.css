@@ -1,0 +1,55 @@
+.weatherDataCont {
+  /* background-color: red; */
+  background-color: rgba(230,200,200,0.5);
+  /* rgb'a': la 'a' es para establecer un valor alfa (valor de transparencia) */
+  /* width: 650px; */
+  width: 100%;
+  height: 100px;
+  line-height: 100px;
+  /* Para que el tamaño que tome sea de 100px de alto */
+  border-radius: 5px;
+  /* margin: 15px; */
+  margin-top: 10px;
+  padding: 5px;  /* para dejar espacio al borde de ese contenedor*/
+  box-sizing: border-box;  /*para que el padding este en el interior del componente*/
+}
+
+.weatherExtraInfoCont {
+  /* background-color: green; */
+  width: 40%; /* 40% del ancho de su contenedor  */
+  display:inline-block;
+  line-height: 28px;
+  text-align: left;
+  /* para que tanto weatherExtraInfoCont como weatherTemperatureCont puedan ubicarse uno al lado del otro */
+  /* Display block indica que va a ir un div debajo del otro */
+}
+
+.weatherTemperatureCont {
+  /* background-color: blue; */
+  width: 60%;;
+  display:inline-block;
+}
+
+.temperature{
+  font-size: 30px;
+  font-weight: bold;  /* Para que sea mas solido el numero */
+  padding-left: 20px;
+  color: white;
+}
+
+.temperatureType{
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+}
+
+.extraInfoText{
+  display: block;
+  /* color: blue; */
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.wicon {
+  color: rgb(255,72,0);
+}
