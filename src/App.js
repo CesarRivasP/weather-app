@@ -3,9 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import LocationList from './components/LocationList';
-import Paper from '@material-ui/core/Paper'; //Es un contenedor que provee sombras para un componente
+import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
-import Typography from '@material-ui/core/Typography'; //Permite manejar distintas tipografias y sus tamaños
+import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
