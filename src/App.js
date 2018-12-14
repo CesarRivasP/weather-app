@@ -57,7 +57,6 @@ class App extends Component {
     return (<Grid fluid="fluid" className="App-header">
       <Row>
         <AppBar position="sticky" className={classNames(classes.root, className)} {...other}>
-          {/* sticky: para que la barra permanezca arriba */}
           <Toolbar>
             <Typography variant="title" color="inherit">
               Weather App
