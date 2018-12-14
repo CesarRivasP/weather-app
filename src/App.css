@@ -9,11 +9,6 @@
 
 .App-header {
   background-color: #282c34;
-  /* min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: white;
   height: 100vh;
@@ -36,41 +31,14 @@
   padding-right: 20px;
   padding-left: 20px;
   height: 85vh;
-  /* width: 100%; */
-  /* 100% - 40% correspondiente a los paddings que se estan generando */
   width: calc(100% - 40px);
-  overflow: auto; /*scroll*/
+  overflow: auto;
   font-family: 'Roboto', sans-serif;
-  /* Roboto como fuente principal, y en caso de que no la encuentre 'sans-serif'*/
-  box-shadow: 10px 10px 40px -12px rgba(0,0,0,75); /* Sombra */
+  box-shadow: 10px 10px 40px -12px rgba(0,0,0,75);
 }
 
 @media (max-width: 64em){
   .details {
     height: 40vh;
   }
-}
-
-.green {
-  background: green;
-  height: 100px;
-  min-width: 50px
-}
-
-.red {
-  background: red;
-  height: 100px;
-  min-width: 50px
-}
-
-.blue {
-  background: blue;
-  height: 100px;
-  min-width: 50px
-}
-
-.yellow {
-  background: yellow;
-  height: 100px;
-  min-width: 50px
 }

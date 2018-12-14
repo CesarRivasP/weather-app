@@ -1,28 +1,24 @@
 .locationCont {
-  width: 100%;  /* Se ajusta al 100% de su contenedor */
+  width: 100%;
   height: 50px;
   text-align: left;
-  /* padding-left: 10px; */
-  /* color: #888; */
   line-height: 35px;
-  overflow: hidden;  /*para manejar la forma en la que se alteran los scrollbar*/
+  overflow: hidden;
 }
 
 .locationCont h1{
   margin: 4px;
-  white-space: nowrap; /*permite que no se quiebre el titulo de los locations*/
+  white-space: nowrap;
 }
 
 .weatherLocationCont {
-  /* width: 650px; */
-  width: calc(100% - 20px); /*calc es una propiedad nueva de css que permite calcular un tamaño de ancho con el 100% menos 20px, por ejemplo*/
-  margin-left: 10px;  /* 20px porque permitiria restar de cada lado los 10px establecidos en los margenes*/
+  width: calc(100% - 20px);
+  margin-left: 10px;
   margin-right: 10px;
-  min-width: 350px;  /* para que cuando llegue a cierto tamaño, no se rompa*/
-  box-sizing: border-box;  /*cambia la forma en la que se calcula el tamaño del componente (asi ayuda a el buen funcionamiento del calc())*/
+  min-width: 350px;
+  box-sizing: border-box;
   padding: 25px;
   font-family: 'Roboto', sans-serif;
-  /* Roboto como fuente principal, y en caso de que no la encuentre 'sans-serif'*/
-  box-shadow: 10px 10px 40px -12px rgba(0,0,0,75); /* Sombra */
+  box-shadow: 10px 10px 40px -12px rgba(0,0,0,75);
   cursor: pointer;
 }

@@ -2,11 +2,10 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {Grid, Row, Col} from 'react-flexbox-grid';
-// import WeatherLocation from './components/WeatherLocation';
 import LocationList from './components/LocationList';
-import Paper from '@material-ui/core/Paper'; //Es un contenedor que provee sombras para un componente
+import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
-import Typography from '@material-ui/core/Typography'; //Permite manejar distintas tipografias y sus tamaños
+import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -38,14 +37,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      // city: 'nueva ciudad', para probar
       city: null
     };
   }
 
   handleSelectedLocation = (city) => {
-    //prop declarada en el state: parametro que llega en la funcion
-    // city: city equivalente a city
     this.setState({city})
     console.log(`${city} - handleSelectedLocation`);
   }
@@ -74,20 +70,9 @@ class App extends Component {
           <LocationList cities={cities} onSelectedLocation={this.handleSelectedLocation}/>
         </Col>
         <Col xs={12} md={6}>
-          <Paper elevation={4} /*zDepth={4}*/
-          >
-            {/* Para realzar este contenedor */}
+          <Paper elevation={4}>
             <div className="details">
-              {/* { city ?
-                  <ForecastExtended city={ city } /> :
-                  // <h1>No se selecciono una ciudad</h1>
-                  null
-                } */
-              }
-              {/* Para evitar usar null */}
-              {/* si viene en city establecido algun valor va renderizar el componente, si no, no renderiza nada */
-                city && <ForecastExtended city={city}/>
-              }
+              {city && <ForecastExtended city={city}/>}
             </div>
           </Paper>
         </Col>
@@ -103,34 +88,3 @@ App.propTypes = {
 };
 
 export default withStyles(styles)(App);
-
-/*<Grid fluid>
-  <Row
-    around="xs"
-  /*start="xs"*/
-{/* Alinieamiento hacia el inicio de la fila */
-} {/* Asi eran las especificaciones para la desmotracion del grid y sus propiedades. */
-} {/* <Col xsOffset={6} xs={12} sm={6} md={4} lg={3}>  Asi se establece el ancho de columna automaticamente */
-} {/*<Col xs={2}>
-      <div className="red"></div>
-    </Col>
-    <Col xs={2}>
-      <div className="green"></div>
-    </Col>
-    <Col xs={2}>
-      <div className="blue"></div>
-    </Col>
-    <Col xs={2}>
-      <div className="yellow"></div>
-    </Col>
-  </Row>
-</Grid>
-
-<header className="App-header">
- <img src={logo} className="App-logo" alt="logo" />
- {/* <WeatherLocation city="Caracas,ve"/> */
-}
-/* <LocationList cities={ cities }/>
-</header> */
-// city === null ? es igual a !city ? --> city es direnfente de nulo (negandola al principio para no tener que voltear las condiciones)
-//!city ?  -> no es nulo | city ? -> es null

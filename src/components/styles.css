@@ -1,31 +1,16 @@
 .locationList {
-  /* background: green; */
-  /* max-height: 30vh; */
   height: 85vh;
-  overflow: auto; /* para que se despliegue la barra del scroll */
-  /* margin-bottom: 20px; /* para que se distancie de la lista del prognostico extendido */
-  box-shadow: 10px 10px 40px -12px rgba(0,0,0,75); /* Sombra */
+  overflow: auto;
+  box-shadow: 10px 10px 40px -12px rgba(0,0,0,75);
 }
 
 
 @media (max-width: 64em) {
   .locationList {
-    /* background: green; */
     max-height: 45vh;
-    /* overflow: auto; /* para que se despliegue la barra del scroll */ */
-    margin-bottom: 20px; /* para que se distancie de la lista del prognostico extendido */
+    margin-bottom: 20px;
   }
 }
-
-/*
-  -Media querie -> @media (tamaño sobre el que se va a trabajar)
-  Ejemplo: @media (tamaño maximo en el cual lo que va aparecer dentro de esta seccion: 64em){
-    clase css a aplicar
-  }
-  em: es un tipo de medida para determinar el tamaño de la pantalla (la utiliza flexbox)
-  media querie permite establecer distintos estilos dependiendo del tamaño de la pantalla
-  vh - view height: 30vh se refiere al 30 % de la pantalla
-*/
 
 .forecast-title {
   color: white;
