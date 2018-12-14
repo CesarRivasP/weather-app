@@ -18,6 +18,7 @@ const WeatherData = ({ data: { temperature, weatherState, humidity, wind } }) =>
 );
 
 WeatherData.propTypes = {
+  // Shape: se espera un objeto con una determinada forma
   data: PropTypes.shape({
     temperature: PropTypes.number.isRequired,
     weatherState: PropTypes.string.isRequired,
