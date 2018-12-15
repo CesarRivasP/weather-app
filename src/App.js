@@ -39,6 +39,11 @@ const store = createStore(()=> {}, //Generar el store
  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() //Instalación del devtools
 );
 
+const setCity = (value) => ({ //esta forma de generar acciones se denomina actionCreator
+  type: 'setCity',
+  value //value:value
+});
+
 class App extends Component {
   constructor(){
     super();
@@ -52,8 +57,9 @@ class App extends Component {
     console.log(`${city} - handleSelectedLocation`);
     // { type: nombre de la accion, valor que se va a pasar }
     // store.dispatch({ type: 'setCity', value: city})
-    const action = { type: 'setCity', value: city };
-    store.dispatch(action);
+    // const action = { type: 'setCity', value: city };  --> No es recomendado
+    // store.dispatch(action);
+    store.dispatch(setCity(city))
   }
 
   render() {
