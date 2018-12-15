@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { createStore } from 'redux';
 import logo from './logo.svg';
 import './App.css';
 import { Grid, Row, Col } from 'react-flexbox-grid';
@@ -33,7 +34,10 @@ const styles = {
     boxShadow: '0 3px 5px 2px rgba(58, 58, 58, .1)',
   },
 };
-
+                                  //
+const store = createStore(()=> {}, //Generar el store
+ window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() //Instalación del devtools
+);
 
 class App extends Component {
   constructor(){
@@ -46,6 +50,10 @@ class App extends Component {
   handleSelectedLocation = (city) => {
     this.setState({ city })
     console.log(`${city} - handleSelectedLocation`);
+    // { type: nombre de la accion, valor que se va a pasar }
+    // store.dispatch({ type: 'setCity', value: city})
+    const action = { type: 'setCity', value: city };
+    store.dispatch(action);
   }
 
   render() {
