@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import ForecastExtended from './components/ForecastExtended';
+import { setCity } from './actions'
 
 
 const cities = [
@@ -39,10 +40,10 @@ const store = createStore(()=> {}, //Generar el store
  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() //Instalación del devtools
 );
 
-const setCity = (value) => ({ //esta forma de generar acciones se denomina actionCreator
-  type: 'setCity',
-  value //value:value
-});
+// const setCity = (value) => ({ //esta forma de generar acciones se denomina actionCreator
+//   type: 'setCity',
+//   value //value:value
+// });
 
 class App extends Component {
   constructor(){
