@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { createStore } from 'redux';
-import logo from './logo.svg';
-import './App.css';
+//import { createStore } from 'redux';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import LocationList from './components/LocationList';
 import Paper from '@material-ui/core/Paper';
@@ -11,8 +9,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
+import { store } from './store';
+import logo from './logo.svg';
+import './App.css';
 import ForecastExtended from './components/ForecastExtended';
-import { setCity } from './actions'
+import { setCity } from './actions';
 
 
 const cities = [
@@ -36,9 +37,9 @@ const styles = {
   },
 };
                                   //
-const store = createStore(()=> {}, //Generar el store
- window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() //Instalación del devtools
-);
+// const store = createStore(()=> {}, //Generar el store
+//  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() //Instalación del devtools
+// );
 
 // const setCity = (value) => ({ //esta forma de generar acciones se denomina actionCreator
 //   type: 'setCity',
