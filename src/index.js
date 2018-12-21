@@ -19,4 +19,4 @@ ReactDOM.render(
 serviceWorker.unregister();
 
 // Se vinculo del punto de generación de la aplicación, nuestra app con el store
-// mediante el provider que viene de la librería react-redux 
+// mediante el provider que viene de la librería react-redux
