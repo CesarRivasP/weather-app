@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 //import { createStore } from 'redux';
+import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import LocationList from './components/LocationList';
 import Paper from '@material-ui/core/Paper';
@@ -9,7 +10,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import { store } from './store';
+//import { store } from './store';
 import logo from './logo.svg';
 import './App.css';
 import ForecastExtended from './components/ForecastExtended';
@@ -46,6 +47,7 @@ const styles = {
 //   value //value:value
 // });
 
+
 class App extends Component {
   constructor(){
     super();
@@ -61,7 +63,8 @@ class App extends Component {
     // store.dispatch({ type: 'setCity', value: city})
     // const action = { type: 'setCity', value: city };  --> No es recomendado
     // store.dispatch(action);
-    store.dispatch(setCity(city))
+    // store.dispatch(setCity(city))
+    this.props.setCity(city);
   }
 
   render() {
@@ -108,4 +111,10 @@ App.propTypes = {
   className: PropTypes.string,
 };
 
-export default withStyles(styles)(App);
+const mapDispatchToPropsActions = (dispatch) => ({
+    setCity: (value) => dispatch(setCity(value)),
+});
+
+const AppConnected = connect(null,mapDispatchToPropsActions)(App)
+
+export default withStyles(styles)(AppConnected);
