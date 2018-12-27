@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 //import { createStore } from 'redux';
-import { connect } from 'react-redux';  //conectar react y redux
-import { compose } from 'redux';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import LocationList from './components/LocationList';
+// import LocationList from './components/LocationList';
 import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
@@ -14,7 +12,8 @@ import { withStyles } from '@material-ui/core/styles';
 //import { store } from './store';
 import './App.css';
 import ForecastExtended from './components/ForecastExtended';
-import { setCity } from './actions';
+// import { setCity } from './actions';
+import LocationListContainer from './containers/LocationListContainer'
 
 
 const cities = [
@@ -56,16 +55,16 @@ class App extends Component {
     };
   }
 
-  handleSelectedLocation = (city) => {
-    this.setState({ city })
-    console.log(`${city} - handleSelectedLocation`);
-    // { type: nombre de la accion, valor que se va a pasar }
-    // store.dispatch({ type: 'setCity', value: city})
-    // const action = { type: 'setCity', value: city };  --> No es recomendado
-    // store.dispatch(action);
-    // store.dispatch(setCity(city))
-    this.props.setCity(city);
-  }
+  // handleSelectedLocation = (city) => {
+  //   this.setState({ city })
+  //   console.log(`${city} - handleSelectedLocation`);
+  //   // { type: nombre de la accion, valor que se va a pasar }
+  //   // store.dispatch({ type: 'setCity', value: city})
+  //   // const action = { type: 'setCity', value: city };  --> No es recomendado
+  //   // store.dispatch(action);
+  //   // store.dispatch(setCity(city))
+  //   this.props.setCity(city);
+  // }
 
   render() {
     const { classes, children, className, ...other } = this.props;
@@ -83,9 +82,10 @@ class App extends Component {
         </Row>
         <Row>
           <Col xs={12} md={6}>
-            <LocationList
+            {/* <LocationList */}
+            <LocationListContainer
               cities={ cities }
-              onSelectedLocation={this.handleSelectedLocation}
+              // onSelectedLocation={this.handleSelectedLocation}
             />
           </Col>
           <Col xs={12} md={6}>
@@ -108,19 +108,21 @@ App.propTypes = {
   children: PropTypes.node,
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
-  setCity: PropTypes.func.isRequired,
+  // setCity: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-//name function:             dispatch(actionCreator())
-  setCity: (value) => dispatch(setCity(value)),
-});
+// const mapDispatchToProps = (dispatch) => ({
+// //name function:             dispatch(actionCreator())
+//   setCity: (value) => dispatch(setCity(value)),
+// });
 
 //const AppConnected = connect(null,mapDispatchToProps)(App)
 
 //export default withStyles(styles)(AppConnected);
 
-export default compose(
-  connect(null, mapDispatchToProps),
-  withStyles(styles)
-)(App)
+// export default compose(
+//   connect(null, mapDispatchToProps),
+//   withStyles(styles)
+// )(App)
+
+export default withStyles(styles)(App);
