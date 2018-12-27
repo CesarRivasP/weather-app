@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //import { createStore } from 'redux';
-import { connect } from 'react-redux';
+import { connect } from 'react-redux';  //conectar react y redux
+import { compose } from 'redux';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import LocationList from './components/LocationList';
 import Paper from '@material-ui/core/Paper';
@@ -11,7 +12,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 //import { store } from './store';
-import logo from './logo.svg';
 import './App.css';
 import ForecastExtended from './components/ForecastExtended';
 import { setCity } from './actions';
@@ -104,17 +104,23 @@ class App extends Component {
   }
 }
 
-
 App.propTypes = {
   children: PropTypes.node,
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
+  setCity: PropTypes.func.isRequired,
 };
 
-const mapDispatchToPropsActions = (dispatch) => ({
-    setCity: (value) => dispatch(setCity(value)),
+const mapDispatchToProps = (dispatch) => ({
+//name function:             dispatch(actionCreator())
+  setCity: (value) => dispatch(setCity(value)),
 });
 
-const AppConnected = connect(null,mapDispatchToPropsActions)(App)
+//const AppConnected = connect(null,mapDispatchToProps)(App)
 
-export default withStyles(styles)(AppConnected);
+//export default withStyles(styles)(AppConnected);
+
+export default compose(
+  connect(null, mapDispatchToProps),
+  withStyles(styles)
+)(App)
