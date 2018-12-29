@@ -14,8 +14,6 @@ export const city = (state, action) => {
 }
 
 
-
 /*
 Este reducer nos va a permitir manejar la ciudad activa.
-
 */
