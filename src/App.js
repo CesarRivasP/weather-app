@@ -11,7 +11,8 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 //import { store } from './store';
 import './App.css';
-import ForecastExtended from './components/ForecastExtended';
+// import ForecastExtended from './components/ForecastExtended';
+import ForecastExtendedContainer from './containers/ForecastExtendedContainer'
 // import { setCity } from './actions';
 import LocationListContainer from './containers/LocationListContainer'
 
@@ -48,12 +49,12 @@ const styles = {
 
 
 class App extends Component {
-  constructor(){
-    super();
-    this.state = {
-      city: null
-    };
-  }
+  // constructor(){
+  //   super();
+  //   this.state = {
+  //     city: null
+  //   };
+  // }
 
   // handleSelectedLocation = (city) => {
   //   this.setState({ city })
@@ -68,7 +69,7 @@ class App extends Component {
 
   render() {
     const { classes, children, className, ...other } = this.props;
-    const { city }= this.state;
+    // const { city }= this.state;
     return (
       <Grid fluid className="App-header">
         <Row>
@@ -91,10 +92,14 @@ class App extends Component {
           <Col xs={12} md={6}>
             <Paper elevation={4}>
               <div className="details">
-              {
+            {  /*{
                 city &&
                 <ForecastExtended city={ city } />
-              }
+                <ForecastExtendedContainer
+                  // city={ city } No es asi, para eso esta redux
+                />
+              }*/}
+                <ForecastExtendedContainer />
               </div>
             </Paper>
           </Col>
