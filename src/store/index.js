@@ -22,7 +22,7 @@ al store.
 */
 
 //AFTER STORE
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION__COMPOSE__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
                                                               //aqui se pasa el Middlware que se esta usando 'thunk'
 export const store = createStore(city, initialState, composeEnhancers(applyMiddleware(thunk)));
 
