@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import ForecastExtended from '../components/ForecastExtended'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getForecastDataFromCities } from '../reducers/cities';
+// import { getForecastDataFromCities } from '../reducers/cities'; para mayor descoplamiento
+import { getForecastDataFromCities, getCity } from '../reducers'; //Mas generica la direccion
+
 
 class ForecastExtendedContainer extends Component {
 
@@ -23,10 +25,12 @@ ForecastExtendedContainer.propTypes = {
 
 // const mapStateToProps = (state) => ({ city: state.city });
 //const mapStateToProps = ({ city, cities }) => (
-const mapStateToProps = state => (  //state para no tener conocimiento (sea visible) de lo que contiene state
+const mapStateToProps = (state) => (  //state para no tener conocimiento (sea visible) de lo que contiene state
   {
     //city before
     city: state.city, //after
+    //after v2
+    city: getCity(state),
     // buscar en cities[en la ciudad seleccionada]. el forecastData
     // before ->forecastData: cities[city] && cities[city].forecastData, // <- para que del estado global de la app nos venga esta info
     //De no hacer la validacion, da error porque en un inicio city es null
@@ -37,7 +41,14 @@ const mapStateToProps = state => (  //state para no tener conocimiento (sea visi
     //Generacion de un selector en el reducer de cities, puesto que es el lugar en donde se conoce el estado, su estructura.
     //Por eso es el punto mas adecuado para establecer un selector
     //AFTER
-    forecastData: getForecastDataFromCities(state.cities, state.city), //abstraccion del estado de la app mediante selectors
+    //forecastData: getForecastDataFromCities(state.cities, state.city), abstraccion del estado de la app mediante selectors
+    //Hay un nivel de desacoplamiento mayor con respecto al forecastData ya que el container desconoce la forma en la que se obtiene.
+    // Solo sabe que obtenemos city de state.city, y se usa ese city como parametro en el selector. SIendo asi, desconoce de que lugar del estado
+    // global estamos sacando los datos
+
+    // se quiere que state.cities, state.city sean tomados directamente del state.
+    //AFTER v2
+    forecastData: getForecastDataFromCities(state),
   }
 ); //Simplificado mediante destructuring
 //toma la propiedad city que esta dentro de state, luego se asigna -- city = city  === city
