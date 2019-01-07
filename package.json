@@ -5,6 +5,8 @@
   "dependencies": {
     "@material-ui/core": "^3.3.2",
     "convert-units": "^2.3.4",
+    "lodash": "^4.17.11",
+    "lodash.topairs": "^4.3.0",
     "moment": "^2.22.2",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
