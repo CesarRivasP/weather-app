@@ -1,6 +1,12 @@
 import transformForecast from '../services/transformForecast'
+import transformWeather from '../services/transformWeather';
+import getUrlWeatherByCity from '../services/getUrlWeatherByCity';
 export const SET_CITY = 'SET_CITY';
 export const SET_FORECAST_DATA = 'SET_FORECAST_DATA';
+export const SET_WEATHER = 'SET_WEATHER';
+export const GET_WEATHER_CITY = 'GET_WEATHER_CITY';
+export const SET_WEATHER_CITY = 'SET_WEATHER_CITY';
+
 
 const api_key = "2655d1ef49563a6f6be6cd4971b05085";
 const url = "https://api.openweathermap.org/data/2.5/forecast";
@@ -34,4 +40,35 @@ export const setSelectedCity = (payload) => {
   };
 };
 
+//Va a establecer el clima actual de cada una de las ciudades
+export const setWeather = (payload) => {
+  //EN payload llega un array con todas las ciudades
+  return dispatch => {
+    payload.forEach(city => {
+      //se va a ejecutar por cada una de las ciudades a medida que se ejecuta el foreach
+      dispatch(gettWeatherCity(city));
+
+      const api_weather = getUrlWeatherByCity(city);
+
+      fetch(api_weather)
+        .then(resolve => {
+            return resolve.json();
+        })
+        .then(weather_data => {
+          const weather = transformWeather(weather_data);
+
+          dispatch(setWeatherCity({ city, weather }));
+        });
+    });
+  }
+}
+
+//Va a solicitar la informacion al servidor
+const gettWeatherCity = (payload) => ({ type: GET_WEATHER_CITY, payload });
+
+//Con la info que retorne el server, lo va a establecer en el estado global
+const setWeatherCity = (payload) => ({ type: SET_WEATHER_CITY, payload });
+
+
+//setWeather internamente va a estar estableciendo los datos dentro del array cities, para luego pasarlos a locationList
 // Por convencion, en vez de de 'value' se denomina 'payload'.
