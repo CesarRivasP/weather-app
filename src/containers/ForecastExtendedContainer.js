@@ -28,7 +28,7 @@ ForecastExtendedContainer.propTypes = {
 const mapStateToProps = (state) => (  //state para no tener conocimiento (sea visible) de lo que contiene state
   {
     //city before
-    city: state.city, //after
+    // city: state.city, //after
     //after v2
     city: getCity(state),
     // buscar en cities[en la ciudad seleccionada]. el forecastData
