@@ -71,7 +71,7 @@ extraer. Entonces se le va a pasar una estrucutra del tipo objeto para pasarla a
 - toPairs retorna un array con clave valor donde la clave va a ser el nombre de la ciudad y el valor va a ser el
 objeto weather. Sobre el array resultado, en el cual cada posicion es un array, en el cual el primer elemento
 es la clave y el segundo es el contenido del objeto.
-EL map se hace a[key,value], es asi porque a por cada uno de los item, se tiene una key y value.
+EL map se hace a[key,value], es asi porque a por cada uno de los item, se tiene una key y un value.
 Sobre esos key y values se va a iterar con map y va a generar objetos como resultado de esa iteracion.
 Los objetos van a tener como forma key, conformada por la key, y el name es igual al nombre de la ciudad (key), y
 luego data, que se va a generar a base de 'value'.weather. Weather es el objeto que contiene los datos a usar Dentro
