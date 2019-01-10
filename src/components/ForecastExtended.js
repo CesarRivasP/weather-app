@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ForecastItem from './ForecastItem/';
-import transformForecast from '../services/transformForecast';
+// import transformForecast from '../services/transformForecast';
 import './styles.css';
 
 
