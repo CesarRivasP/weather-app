@@ -9,7 +9,7 @@ import './styles.css';
 const WeatherData = ({ data: { temperature, weatherState, humidity, wind } }) => (
   <div className="weatherDataCont">
     <WeatherTemperature
-      temperature={temperature}
+      temperature={parseInt(temperature,10)}
       weatherState={weatherState}/>
     <WeatherExtraInfo
       humidity={humidity}
