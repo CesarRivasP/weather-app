@@ -7,17 +7,27 @@ export const cities = (state = {}, action) => {
   switch (action.type){
     case SET_FORECAST_DATA: {
       const { city, forecastData } = action.payload;
-      return { ...state, [city]: { forecastData: forecastData/*, weather: null */}}
+      // return { ...state, [city]: { forecastData: forecastData/*, weather: null */}} before to issue
+      //AFTER
+      return { ...state, [city]: { ...state[city], forecastData }}
+      /*
+        - Se debe invocar spread operator 'state' y se le pasa como valor 'city', de esta manera se esta tomando la
+        propiedad 'city' dentro del objeto 'state'.
+        - Se usa el spread operator de manera que el nuevo valor 'forecastData' se le suma a lo que venga
+        con ...state[city]. Si ya contiene al forecastData, va a reemplazar al anterior. Si no lo contiene,
+        lo agrega.
+        - "city" es una variable, entonces siempre va a tener un valor diferente.
+      */
     }
     case GET_WEATHER_CITY: {
       const city = action.payload;  //llega el string correspondiente a la ciudad
-      return { ...state, [city]: { weather: null }}  // [city]: establecer el weather a null
+      return { ...state, [city]: {  ...state[city], weather: null }}  // [city]: establecer el weather a null
       //Cuando se solicita el clima actual, se establece en null para que aparezca el indicador de progreso
     }
     case SET_WEATHER_CITY: {
       //cuando retorna el resultado del servidor
       const { city, weather } = action.payload;
-      return { ...state, [city]: { weather }};
+      return { ...state, [city]: { ...state[city], weather }};
       //a base de city se genera un objeto que va a tener el weather
     }
     default:
