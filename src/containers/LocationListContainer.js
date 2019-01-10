@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';  //conectar react y redux
 // import { setCity } from '../actions';
-import { setSelectedCity, setWeather } from '../actions';
+//import { setSelectedCity, setWeather } from '../actions';
+//Para simplificar las acciones a utlizar una vez se aplica bindActionCreators
+import * as actions from '../actions';//Es un alias que podria sea cualquiera
+//El * implica que se va a tomar todo lo que este dentro de un determinado archivo, es decir, todo lo que
+//sea exportado del archivo '../actions' va a ser inyectado en el alias 'actions'.
+//Como un namespace que adentro trae todas las exportaciones que se realizaron dentro del archivo
 import { getWeatherCities, getCity } from '../reducers';
 import LocationList from '../components/LocationList';
 
@@ -45,6 +51,8 @@ LocationListContainer.propTypes = {
   // setCity: PropTypes.func.isRequired,
   cities: PropTypes.array.isRequired,
   citiesWeather: PropTypes.array.isRequired,
+  setWeather: PropTypes.func.isRequired,
+  setSelectedCity: PropTypes.func.isRequired,
   city: PropTypes.string.isRequired,
 };
 
@@ -54,10 +62,18 @@ const mapStateToProps = (state) => ({
   city: getCity(state), //Para poder llegarle al initial state (ciudad) que se tiene declarado en store
 })
 
-const mapDispatchToProps = (dispatch) => ({
-  setSelectedCity: (value) => dispatch(setSelectedCity(value)),
-  //Va a traer info de todos los climas de las ciudades
-  setWeather: (cities) => dispatch(setWeather(cities)), //Representa la busqueda de la informacion, el nuevo action creator
-});
+//Before bindActionCreators
+// const mapDispatchToProps = (dispatch) => ({
+//   setSelectedCity: (value) => dispatch(setSelectedCity(value)),
+//   //Va a traer info de todos los climas de las ciudades
+//   setWeather: (cities) => dispatch(setWeather(cities)), //Representa la busqueda de la informacion, el nuevo action creator
+// });
+
+// after bindActionCreators
+const mapDispatchToProps = (dispatch) => bindActionCreators(actions, dispatch);
+//actions contiene todas las acciones que podrian ser utilizadas
+//Esto solo hace un bind de los createActions que estan dentro de 'actions', y generar un objeto
+//Ese objeto va a contener las mismas claves y propiedades que los actions que vienen de la manera normal
+//Es equivalente a la  declaracion de mapDispatchToProps corriente, solo nos permite escribir menos codigo
 
 export default connect(mapStateToProps, mapDispatchToProps)(LocationListContainer);
