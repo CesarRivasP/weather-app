@@ -8,12 +8,12 @@ import LocationList from '../components/LocationList';
 
 
 class LocationListContainer extends Component {
-  constructor(){
-    super();
+  // constructor(){
+  //   super();
     //setWeather se debe ejecutar en un momento inicial, puesto que se necesita apenas aparece
     // this.props.setWeather(this.props.cities);
     //Esto se puede hacer tanto en el constructor como en el componentDidMount
-  }
+  // }
 
   componentDidMount(){
     this.props.setWeather(this.props.cities);
@@ -38,7 +38,7 @@ class LocationListContainer extends Component {
 }
 
 LocationListContainer.propTypes = {
-  setCity: PropTypes.func.isRequired,
+  // setCity: PropTypes.func.isRequired,
   cities: PropTypes.array.isRequired,
   citiesWeather: PropTypes.array.isRequired,
 };
