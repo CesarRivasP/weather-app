@@ -5,11 +5,9 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Location from './Location';
 import WeatherData from './WeatherData';
 import './styles.css';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+// import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 // import transformWeather from '../../services/transformWeather';
-import getUrlWeatherByCity from '../../services/getUrlWeatherByCity';
+// import getUrlWeatherByCity from '../../services/getUrlWeatherByCity';
 
 
 // class WeatherLocation extends Component {
