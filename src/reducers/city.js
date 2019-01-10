@@ -16,7 +16,6 @@ export const city = (state = {}, action) => {
     default:
       return state;
   }
-  return state;
 }
 
 /*
