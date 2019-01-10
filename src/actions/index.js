@@ -24,19 +24,19 @@ export const setSelectedCity = (payload) => {
 
     // accion inicial -> para establecer que se esta ajecutando una busqueda
     // por lo que se va a activar en el estado un indicador de busqueda de datos
-    dispatch(setCity(payload))  //ciudad que el usuario selecciono, establece la ciudad actial
+    dispatch(setCity(payload));  //ciudad que el usuario selecciono, establece la ciudad actial
 
     return fetch(url_forecast)
       .then(data => (data.json()))
       .then(weather_data => {
-       const forecastData = transformForecast(weather_data)
-        //modificar el estado con el resultado de la promise (http request== fetch)
-        //el payload lleva la city de la data que se esta consultando
-        // forecastData lleva la informacion del pronostico extendido de la city
-        dispatch(setForecastData({ city: payload, forecastData}));
-        //establece el resultado del pronostico extendido correspondiente para esa ciudad
-      }
-    );
+         const forecastData = transformForecast(weather_data)
+          //modificar el estado con el resultado de la promise (http request== fetch)
+          //el payload lleva la city de la data que se esta consultando
+          // forecastData lleva la informacion del pronostico extendido de la city
+          dispatch(setForecastData({ city: payload, forecastData}));
+          //establece el resultado del pronostico extendido correspondiente para esa ciudad
+        }
+      );
   };
 };
 
