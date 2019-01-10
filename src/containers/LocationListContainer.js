@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';  //conectar react y redux
 // import { setCity } from '../actions';
 import { setSelectedCity, setWeather } from '../actions';
-import { getWeatherCities } from '../reducers';
+import { getWeatherCities, getCity } from '../reducers';
 import LocationList from '../components/LocationList';
 
 
@@ -16,8 +16,12 @@ class LocationListContainer extends Component {
   // }
 
   componentDidMount(){
-    this.props.setWeather(this.props.cities);
+    const { setWeather, setSelectedCity, cities, city } = this.props;
 
+    setWeather(cities);
+    //after
+    setSelectedCity(city);
+    //setSelectedCity es el responsable de realizar la accion de busqueda del pronostico extendido
   }
 
   handleSelectedLocation = (city) => {
@@ -41,10 +45,13 @@ LocationListContainer.propTypes = {
   // setCity: PropTypes.func.isRequired,
   cities: PropTypes.array.isRequired,
   citiesWeather: PropTypes.array.isRequired,
+  city: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   citiesWeather: getWeatherCities(state), //selector
+  //Para acceder a la ciudad inicial
+  city: getCity(state), //Para poder llegarle al initial state (ciudad) que se tiene declarado en store
 })
 
 const mapDispatchToProps = (dispatch) => ({
