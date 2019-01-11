@@ -19,12 +19,26 @@ const setForecastData = (payload) => ({ type: SET_FORECAST_DATA, payload });
 //Establece la ciudad actual y a la vez realiza la peticion al server del pronostico extendido
 export const setSelectedCity = (payload) => {
   //se declara asi gracias al middlware
-  return dispatch => {  //aqui se genera una funcion que tiene como parametro 'dispatch'
+  // return dispatch => {  //aqui se genera una funcion que tiene como parametro 'dispatch'
+  //Para agregar la validacion de la peticion con respecto al tiempo
+  //Hay que acceder al state de la app, por lo que el segundo parametro del redux thunk es el getState
+  //getState es una funcion que obtiene el estado global de la aplicacion
+  return (dispatch, getState) => {
+
    const url_forecast= `${url}?q=${payload}&appid=${api_key}`;
 
     // accion inicial -> para establecer que se esta ajecutando una busqueda
     // por lo que se va a activar en el estado un indicador de busqueda de datos
     dispatch(setCity(payload));  //ciudad que el usuario selecciono, establece la ciudad actial
+
+    const state = getState();
+    const date = state.cities[payload] && state.cities[payload].forecastDataDate;
+    const now = new Date();
+
+    if(date && (now - date) < 1* 60 * 1000){ //la diferencia viene en milisegundos alo multiplicar x 1000
+      //Si hace menos de un minuto se solicito el forescastData, no volvera a hacer la peticion
+      return;
+    }
 
     return fetch(url_forecast)
       .then(data => (data.json()))
