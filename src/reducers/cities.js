@@ -9,7 +9,7 @@ export const cities = (state = {}, action) => {
       const { city, forecastData } = action.payload;
       // return { ...state, [city]: { forecastData: forecastData/*, weather: null */}} before to issue
       //AFTER
-      return { ...state, [city]: { ...state[city], forecastData }}
+      // return { ...state, [city]: { ...state[city], forecastData }}
       /*
         - Se debe invocar spread operator 'state' y se le pasa como valor 'city', de esta manera se esta tomando la
         propiedad 'city' dentro del objeto 'state'.
@@ -18,6 +18,8 @@ export const cities = (state = {}, action) => {
         lo agrega.
         - "city" es una variable, entonces siempre va a tener un valor diferente.
       */
+      //After : La modificacion para poder validar si paso poco tiempo desde que se hizo una determinanda peticion
+      return { ...state, [city]: { ...state[city], forecastData, forecastDataDate: new Date() }};  //Para que tome la fecha actual
     }
     case GET_WEATHER_CITY: {
       const city = action.payload;  //llega el string correspondiente a la ciudad
@@ -48,7 +50,6 @@ ESta es la primera entrada del diccionario correspondiente a la ciudad que se se
 - state[city] state de la ciudad seleccionada
 - ese state tiene el diccionario (cities) donde estan todas las ciudades visitadas anteriormente
 */
-
 
 //after
 export const getForecastDataFromCities =
