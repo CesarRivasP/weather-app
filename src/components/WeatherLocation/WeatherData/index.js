@@ -1,4 +1,3 @@
-//Before WeatherData
 import React from 'react';
 import WeatherTemperature from './WeatherTemperature';
 import WeatherExtraInfo from './WeatherExtraInfo';
@@ -20,7 +19,7 @@ const WeatherData = ({ data: { temperature, weatherState, humidity, wind } }) =>
 WeatherData.propTypes = {
   // Shape: se espera un objeto con una determinada forma
   data: PropTypes.shape({
-    temperature: PropTypes.number.isRequired,
+    temperature: PropTypes.string.isRequired,
     weatherState: PropTypes.string.isRequired,
     humidity: PropTypes.number.isRequired,
     wind: PropTypes.string.isRequired,
