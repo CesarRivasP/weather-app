@@ -23,13 +23,8 @@ ForecastExtendedContainer.propTypes = {
   forecastData: PropTypes.array,
 }
 
-// const mapStateToProps = (state) => ({ city: state.city });
-//const mapStateToProps = ({ city, cities }) => (
 const mapStateToProps = (state) => (  //state para no tener conocimiento (sea visible) de lo que contiene state
   {
-    //city before
-    // city: state.city, //after
-    //after v2
     city: getCity(state),
     // buscar en cities[en la ciudad seleccionada]. el forecastData
     // before ->forecastData: cities[city] && cities[city].forecastData, // <- para que del estado global de la app nos venga esta info
@@ -56,4 +51,5 @@ const mapStateToProps = (state) => (  //state para no tener conocimiento (sea vi
 export default connect(mapStateToProps, null)(ForecastExtendedContainer);
 
 /*
-Dentro de cities hay un diccionario 'cities[city]'. De ese diccionario se toma una entrada, y de ahi se llega al forecastData */
+Dentro de cities hay un diccionario 'cities[city]'. De ese diccionario se toma una entrada, y
+de ahi se llega al forecastData */
