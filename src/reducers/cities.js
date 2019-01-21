@@ -7,17 +7,6 @@ export const cities = (state = {}, action) => {
   switch (action.type){
     case SET_FORECAST_DATA: {
       const { city, forecastData } = action.payload;
-      // return { ...state, [city]: { forecastData: forecastData/*, weather: null */}} before to issue
-      //AFTER
-      // return { ...state, [city]: { ...state[city], forecastData }}
-      /*
-        - Se debe invocar spread operator 'state' y se le pasa como valor 'city', de esta manera se esta tomando la
-        propiedad 'city' dentro del objeto 'state'.
-        - Se usa el spread operator de manera que el nuevo valor 'forecastData' se le suma a lo que venga
-        con ...state[city]. Si ya contiene al forecastData, va a reemplazar al anterior. Si no lo contiene,
-        lo agrega.
-        - "city" es una variable, entonces siempre va a tener un valor diferente.
-      */
       //After : La modificacion para poder validar si paso poco tiempo desde que se hizo una determinanda peticion
       return { ...state, [city]: { ...state[city], forecastData, forecastDataDate: new Date() }};  //Para que tome la fecha actual
     }
@@ -37,27 +26,11 @@ export const cities = (state = {}, action) => {
   }
 }
 
-//selector -before                        state,citySelected => state que maneja cities (el estate que maneja el reducer anterior y no al state global de la app)
-//export const getForecastDataFromCities = (state, city) => state[city] && state[city].forecastData   //si es diferente de null
-//Este selector obtiene el forecastData para la ciudad seleccionada
-
-//Obtener la informacion del forecast (pronostico extendido) desde las ciudades.
-
-/*
-[city]: {forecastData: forecastData, weather: null}   //el nombre de la ciudad va a ser una clave
-ESta es la primera entrada del diccionario correspondiente a la ciudad que se seleccione
-
-- state[city] state de la ciudad seleccionada
-- ese state tiene el diccionario (cities) donde estan todas las ciudades visitadas anteriormente
-*/
-
 //after
-export const getForecastDataFromCities =
-  createSelector((state, city) => state[city] && state[city].forecastData, forecastData => forecastData);
+export const getForecastDataFromCities = createSelector(
+  (state, city) => state[city] && state[city].forecastData, forecastData => forecastData
+);
 //obtiene el forecastData y despues se le indica que eso sea el resultado final
-
-//Se establecieron los reducers entre llaves para que se queden en bloques y se pueda reutilizar los nombres de
-//Las constantes, ya que sino, no se puede
 
 //selector
 export const getWeatherCities =
@@ -73,7 +46,11 @@ const fromObjToArray = (cities) => (toPairs(cities).map(([key,value]) => (
   }
 )));
 
-/* El metodo de lodash se va a utilizar para la transformacion del array vacio, de manera que ahora hay que generar
+/*
+Se establecieron los reducers entre llaves para que se queden en bloques y se pueda reutilizar
+los nombres de las constantes, ya que sino, no se puede
+
+ El metodo de lodash se va a utilizar para la transformacion del array vacio, de manera que ahora hay que generar
 una funcion basados en toPairs que va a transformar el objeto que tenemos en el state en el array que se necesitan,
 que son el key, name y data (info del clima actual)
 La estructura sobre la que se parte es un objeto llamado cities que tiene distintas propiedades para cada Una
