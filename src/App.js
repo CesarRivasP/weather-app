@@ -37,7 +37,7 @@ const styles = {
 class App extends Component {
 
   render() {
-    const { classes, children, className, ...other } = this.props;
+    const { classes, className, ...other } = this.props;
     return (
       <Grid fluid className="App-header">
         <Row>
@@ -51,20 +51,11 @@ class App extends Component {
         </Row>
         <Row>
           <Col xs={12} md={6}>
-            <LocationListContainer
-              cities={ cities }
-            />
+            <LocationListContainer cities={ cities } />
           </Col>
           <Col xs={12} md={6}>
             <Paper elevation={4}>
               <div className="details">
-            {  /*{
-                city &&
-                <ForecastExtended city={ city } />
-                <ForecastExtendedContainer
-                  // city={ city } No es asi, para eso esta redux
-                />
-              }*/}
                 <ForecastExtendedContainer />
               </div>
             </Paper>
@@ -76,7 +67,6 @@ class App extends Component {
 }
 
 App.propTypes = {
-  children: PropTypes.node,
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
 };
