@@ -20,7 +20,7 @@ WeatherLocation.propTypes = {
   city: PropTypes.string.isRequired,
   onWeatherLocationClick: PropTypes.func,
   data: PropTypes.shape({
-    temperature: PropTypes.number.isRequired,
+    temperature: PropTypes.string.isRequired,
     weatherState: PropTypes.string.isRequired,
     humidity: PropTypes.number.isRequired,
     wind: PropTypes.string.isRequired,
