@@ -3,11 +3,9 @@ import WeatherIcons from 'react-weathericons';
 import PropTypes from 'prop-types'
 import {
   CLOUD,
-  // CLOUDY,
   SUN,
   RAIN,
   SNOW,
-  // WINDY
   THUNDER,
   DRIZZLE
 } from '../../../constants/weathers';
@@ -18,10 +16,8 @@ clima y va a retornar el nombre del icono.*/
 const icons = {
   [SUN]: 'day-sunny', //Asi se pasan las constantes como nombres de propiedades.
   [CLOUD]: 'cloud',     //Este es el mapeo entre la presentacion que se le da al clima
-  // [CLOUDY]: 'cloudy',   // y el icono que finalmente se muestra.
   [RAIN]: 'rain',
   [SNOW]: 'snow',
-  // [WINDY]: 'windy',
   [THUNDER]: 'day-thunderstorm',
   [DRIZZLE]: 'day-shower',
 }
@@ -58,7 +54,7 @@ WeatherTemperature.propTypes = {
 export default WeatherTemperature;
 
 /*
-  - AL invocarse la funcion getWeatherIcon esta retorna condigo jsx, en el
+  - AL invocarse la funcion getWeatherIcon esta retorna codigo jsx, en el
   cual en base a lo que llegue como weatherState se va a cambiar el 'name'
   del icono que se debe aplicar.
   - La constante icons hace una equivalencia entre lo que esta viniendo para
