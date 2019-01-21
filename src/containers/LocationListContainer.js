@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';  //conectar react y redux
-// import { setCity } from '../actions';
-//import { setSelectedCity, setWeather } from '../actions';
-//Para simplificar las acciones a utlizar una vez se aplica bindActionCreators
 import * as actions from '../actions';//Es un alias que podria sea cualquiera
 //El * implica que se va a tomar todo lo que este dentro de un determinado archivo, es decir, todo lo que
 //sea exportado del archivo '../actions' va a ser inyectado en el alias 'actions'.
@@ -31,7 +28,7 @@ class LocationListContainer extends Component {
   }
 
   handleSelectedLocation = (city) => {
-    console.log(`${city} - handleSelectedLocation`);
+    // console.log(`${city} - handleSelectedLocation`);
     this.props.setSelectedCity(city);
   }
 
@@ -48,7 +45,6 @@ class LocationListContainer extends Component {
 }
 
 LocationListContainer.propTypes = {
-  // setCity: PropTypes.func.isRequired,
   cities: PropTypes.array.isRequired,
   citiesWeather: PropTypes.array.isRequired,
   setWeather: PropTypes.func.isRequired,
