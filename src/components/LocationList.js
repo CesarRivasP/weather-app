@@ -11,11 +11,17 @@ const LocationList = ({ cities, onSelectedLocation }) => {
   }
 
   const asingComponents = (cities) => (
-    cities.map((city, index) =>
+    // cities.map((city, index) =>
+    cities.map(city =>
       <WeatherLocation
-        key={city}
-        city={city}
-        onWeatherLocationClick={() => handleWeatherLocationClick(city)}
+        // key={city}
+        key={city.key}
+        // city={city}
+        city={city.name}
+        // onWeatherLocationClick={() => handleWeatherLocationClick(city)}
+        onWeatherLocationClick={() => handleWeatherLocationClick(city.name)}
+        //AFTER
+        data={city.data}
       />
     )
   );
@@ -26,7 +32,6 @@ const LocationList = ({ cities, onSelectedLocation }) => {
     </div>
   );
 }
-
 
 LocationList.propTypes = {
   cities: PropTypes.array.isRequired,

@@ -48,7 +48,7 @@ const transformWeather = (weather_data) => {
     weatherState,
     wind: `${speed} m/s`
   }
-  
+
   return data;
 }
 

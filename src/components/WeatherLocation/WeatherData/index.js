@@ -9,7 +9,7 @@ import './styles.css';
 const WeatherData = ({ data: { temperature, weatherState, humidity, wind } }) => (
   <div className="weatherDataCont">
     <WeatherTemperature
-      temperature={temperature}
+      temperature={parseInt(temperature,10)}
       weatherState={weatherState}/>
     <WeatherExtraInfo
       humidity={humidity}
@@ -18,6 +18,7 @@ const WeatherData = ({ data: { temperature, weatherState, humidity, wind } }) =>
 );
 
 WeatherData.propTypes = {
+  // Shape: se espera un objeto con una determinada forma
   data: PropTypes.shape({
     temperature: PropTypes.number.isRequired,
     weatherState: PropTypes.string.isRequired,
