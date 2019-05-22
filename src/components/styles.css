@@ -4,7 +4,6 @@
   box-shadow: 10px 10px 40px -12px rgba(0,0,0,75);
 }
 
-
 @media (max-width: 64em) {
   .locationList {
     max-height: 45vh;
