@@ -4,7 +4,7 @@ import WeatherData from '../WeatherLocation/WeatherData/'
 
 
 const ForecastItem = ({ weekDay, hour, data }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <div>
       <h3>{ weekDay } hora: { hour } hrs</h3>
@@ -17,7 +17,7 @@ ForecastItem.propTypes = {
   weekDay: PropTypes.string.isRequired,
   hour: PropTypes.number.isRequired,
   data: PropTypes.shape({
-    temperature: PropTypes.number.isRequired,
+    temperature: PropTypes.string.isRequired,
     weatherState: PropTypes.string.isRequired,
     humidity: PropTypes.number.isRequired,
     wind: PropTypes.string.isRequired,
