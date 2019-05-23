@@ -6,9 +6,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import './App.css';
 import ForecastExtendedContainer from './containers/ForecastExtendedContainer'
 import LocationListContainer from './containers/LocationListContainer'
+import './App.css';
 
 
 const cities = [
@@ -54,7 +54,7 @@ class App extends Component {
               cities={ cities }
             />
           </Col>
-          <Col xs={12} md={6}>
+          <Col xs={12} md={6} >
             <Paper elevation={4}>
               <div className="details">
                 <ForecastExtendedContainer />
