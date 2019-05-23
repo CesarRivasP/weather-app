@@ -4,6 +4,10 @@
   box-shadow: 10px 10px 40px -12px rgba(0,0,0,75);
 }
 
+.locationList::-webkit-scrollbar {
+  display: none;
+}
+
 @media (max-width: 64em) {
   .locationList {
     max-height: 45vh;
